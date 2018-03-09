@@ -95,6 +95,8 @@ count: false
 ---
 count: false
 
+
+class: center, middle
 # 🤕 🚑
 
 ---
@@ -145,7 +147,7 @@ count: false
 ## why no web interface
 ## Handling user error
 
-...
+---
 
 ## Reformatting the iterations with regards to messaging user (3-4 slides of code)
 
