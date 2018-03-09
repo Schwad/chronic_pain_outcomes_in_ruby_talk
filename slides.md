@@ -2,12 +2,16 @@ layout: true
 count: false
 
 ---
+count: false
 
 class: center, middle
+count: false
 
 # Title
 
 ---
+count: false
+count: false
 
 # Agenda
 
@@ -25,6 +29,7 @@ class: center, middle
 
 
 ---
+count: false
 
 # Check out dat ruby
 
@@ -37,6 +42,7 @@ end
 .center[##I wonder if anyone will see this]
 
 ---
+count: false
 
 # Testing things out.
 
@@ -47,49 +53,59 @@ end
 .center[center aligned text]
 
 ---
+count: false
 
 class: center middle
 # Image Time
 
 ---
+count: false
 
 # Who am I?
 
 ---
+count: false
 background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/0f/b3/68/f8/vista-view.jpg)
 # I used to live here
 
 ---
+count: false
 background-image: url(http://www.opc-cornwall.org/Par_new/l_m/photos/lostwithiel1.jpg)
 # Now I live here
 
 ---
+count: false
 
 # And I work here
 
 .center[![This is my image](https://pbs.twimg.com/profile_images/1122058292/ohq_avatar_400x400.jpg)]
 
 ---
+count: false
 
 # Where I do this
 
 .center[![If you are seeing this text everything has gone horribly wrong.](http://plenglish.com/images/2017/diciembre/17/barcos.jpg)]
 
---
+---
+count: false
 
 # Summer 2017
 
---
+---
+count: false
 
 # 🤕 🚑
 
---
+---
+count: false
 
 # What is Avascular Necrosis?
 
 .center[![This is my image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjCsNCxbPCoyFQg6bc3e9Hx_dDptogJSe4oCaH0zSrgOQpig0YzQ)]
 
---
+---
+count: false
 
 .center[# ❗️]
 
@@ -97,7 +113,8 @@ background-image: url(http://www.opc-cornwall.org/Par_new/l_m/photos/lostwithiel
 
 Dr. Said that the pressure swings will affect joint pain.
 
---
+---
+count: false
 
 class: center, middle
 # ❓
@@ -108,6 +125,7 @@ class: center, middle
 My hypothesis
 
 ---
+count: false
 
 class: center, middle
 
@@ -118,6 +136,7 @@ class: center, middle
 Striking a deal with laura. It's all about compromise.
 
 ---
+count: false
 
 ## unit of measure, millibar vs. inches and what is ACTUALLY metric. make america joke.
 ## GOAL: forecasting someday
@@ -139,3 +158,4 @@ Striking a deal with laura. It's all about compromise.
 ## However, never under a 4 under x
 
 ---
+count: false
