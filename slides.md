@@ -1,113 +1,83 @@
 layout: true
-count: false
 
 ---
-count: false
 
 class: center, middle
-count: false
 
-# Title
+# Measuring Chronic Pain Outcomes with Ruby and Twilio
+
+.left[![ruby](https://i.imgur.com/HxDCfxI.png)]
+.right[![twilio](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)]
 
 ---
-count: false
-count: false
 
-# Agenda
+# In order:
 
-1. Introduction
+1. Lay out a non-business 'problem' through a story
 
 --
 
-2. Deep-dive
+2. Discuss attacking that problem with the help of 'Ruby' 🍖
 
 --
 
-3. ...
+3. Cover outcomes and retrospective observations
 
-<!-- this is how we iterate new things in -->
+--
 
-
----
-count: false
-
-# Check out dat ruby
-
-```ruby
-def fish
-  puts 'bar!'
-end
-```
-
-.center[##I wonder if anyone will see this]
+4. Underline the importance of using your Ruby 'superpower' ❤️
 
 ---
-count: false
-
-# Testing things out.
-
-## Smaller headline.
-
-.left[left aligned text]
-.right[right aligned text]
-.center[center aligned text]
-
----
-count: false
-
-class: center middle
-# Image Time
-
----
-count: false
 
 # Who am I?
 
 ---
-count: false
 background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/0f/b3/68/f8/vista-view.jpg)
 # I used to live here
 
 ---
-count: false
 background-image: url(http://www.opc-cornwall.org/Par_new/l_m/photos/lostwithiel1.jpg)
 # Now I live here
 
 ---
-count: false
 
 # And I work here
 
 .center[![This is my image](https://pbs.twimg.com/profile_images/1122058292/ohq_avatar_400x400.jpg)]
 
 ---
-count: false
 
 # Where I do this
 
 .center[![If you are seeing this text everything has gone horribly wrong.](http://plenglish.com/images/2017/diciembre/17/barcos.jpg)]
 
 ---
-count: false
+class: center, middle
+# Today's talk has nothing to do about where I work.
+
+--
+.center[![image of laura and I](https://i.imgur.com/nEKCRhY.jpg)]
+
+---
+
+# 1. The problem
+
+---
 
 # Summer 2017
 
----
-count: false
-
+--
 
 class: center, middle
 # 🤕 🚑
 
 ---
-count: false
 
 # What is Avascular Necrosis?
 
 .center[![This is my image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjCsNCxbPCoyFQg6bc3e9Hx_dDptogJSe4oCaH0zSrgOQpig0YzQ)]
 
 ---
-count: false
 
 .center[# ❗️]
 
@@ -116,7 +86,6 @@ count: false
 Dr. Said that the pressure swings will affect joint pain.
 
 ---
-count: false
 
 class: center, middle
 # ❓
@@ -126,11 +95,13 @@ class: center, middle
 
 My hypothesis
 
----
-count: false
-
+--
+.left[# Pain: nearly unpredictable]
+--
+.left[# Pressure systems: very predictable]
+--
 class: center, middle
-
+# Sit down at the negotiating table
 # 😼 😈
 
 ???
@@ -138,7 +109,17 @@ class: center, middle
 Striking a deal with laura. It's all about compromise.
 
 ---
-count: false
+
+# She would help me track and measure her pain 📈 ✔️
+
+--
+
+# I would start counting my caloric intake every day 😱 🍪
+
+---
+class: center, middle
+# 2. Solving this problem, with the aid of Ruby
+---
 
 ## unit of measure, millibar vs. inches and what is ACTUALLY metric. make america joke.
 ## GOAL: forecasting someday
@@ -160,4 +141,3 @@ count: false
 ## However, never under a 4 under x
 
 ---
-count: false

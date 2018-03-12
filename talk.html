@@ -20,57 +20,33 @@
     <textarea id="source">
 
       layout: true
-      count: false
 
       ---
 
       class: center, middle
 
-      # Title
+      # Measuring Chronic Pain Outcomes with Ruby and Twilio
+
+      .left[![ruby](https://i.imgur.com/HxDCfxI.png)]
+      .right[![twilio](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)]
 
       ---
 
-      # Agenda
+      # In order:
 
-      1. Introduction
+      1. Lay out a non-business 'problem' through a story
 
       --
 
-      2. Deep-dive
+      2. Discuss attacking that problem with the help of 'Ruby' 🍖
 
       --
 
-      3. ...
+      3. Cover outcomes and retrospective observations
 
-      <!-- this is how we iterate new things in -->
+      --
 
-
-      ---
-
-      # Check out dat ruby
-
-      ```ruby
-      def fish
-        puts 'bar!'
-      end
-      ```
-
-      .center[##I wonder if anyone will see this]
-
-      ---
-
-      # Testing things out.
-
-      ## Smaller headline.
-
-      .left[left aligned text]
-      .right[right aligned text]
-      .center[center aligned text]
-
-      ---
-
-      class: center middle
-      # Image Time
+      4. Underline the importance of using your Ruby 'superpower' ❤️
 
       ---
 
@@ -97,11 +73,23 @@
       .center[![If you are seeing this text everything has gone horribly wrong.](http://plenglish.com/images/2017/diciembre/17/barcos.jpg)]
 
       ---
+      class: center, middle
+      # Today's talk has nothing to do about where I work.
 
-      # Summer 2017
+      --
+      .center[![image of laura and I](https://i.imgur.com/nEKCRhY.jpg)]
 
       ---
 
+      # 1. The problem
+
+      ---
+
+      # Summer 2017
+
+      --
+
+      class: center, middle
       # 🤕 🚑
 
       ---
@@ -128,16 +116,30 @@
 
       My hypothesis
 
-      ---
-
+      --
+      .left[# Pain: nearly unpredictable]
+      --
+      .left[# Pressure systems: very predictable]
+      --
       class: center, middle
-
+      # Sit down at the negotiating table
       # 😼 😈
 
       ???
 
       Striking a deal with laura. It's all about compromise.
 
+      ---
+
+      # She would help me track and measure her pain 📈 ✔️
+
+      --
+
+      # I would start counting my caloric intake every day 😱 🍪
+
+      ---
+      class: center, middle
+      # 2. Solving this problem, with the aid of Ruby
       ---
 
       ## unit of measure, millibar vs. inches and what is ACTUALLY metric. make america joke.
@@ -147,7 +149,7 @@
       ## why no web interface
       ## Handling user error
 
-      ...
+      ---
 
       ## Reformatting the iterations with regards to messaging user (3-4 slides of code)
 
@@ -160,12 +162,13 @@
       ## However, never under a 4 under x
 
       ---
-
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
     <script>
-      var slideshow = remark.create();
+      var slideshow = remark.create({
+        slideNumberFormat: ''
+      });
     </script>
   </body>
 </html>
