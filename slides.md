@@ -197,7 +197,29 @@ class: center, middle
 class: center, middle
 # How we view pain
 
-.left[* ]
+.left[* Pain is incredibly subjective]
+.left[* Hospital stay tried to make it objective]
+.left[* Laura had become *very* good at monitoring pain to her standard]
+.left[* !>5? no relief for you]
+.left[* Adjustment for the race to the top]
+
+---
+class: center, middle
+# Running this with a bit of machine learning
+
+---
+
+# <<INCLUDE GRAPH HERE>>
+
+---
+class: center, middle
+# Conclusions
+
+.left{*}
+
+???
+
+Spend a day THOROUGHLY running through these numbers again, changing if need be
 
 ---
 
