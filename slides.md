@@ -99,7 +99,7 @@ My hypothesis
 .left[# Pain: nearly unpredictable]
 --
 .left[# Pressure systems: very predictable]
---
+---
 class: center, middle
 # Sit down at the negotiating table
 # 😼 😈
@@ -119,6 +119,128 @@ Striking a deal with laura. It's all about compromise.
 ---
 class: center, middle
 # 2. Solving this problem, with the aid of Ruby
+
+???
+
+For the next few parts, I will use more comprehensive, longer slides. As I get used to them I can break them out.
+
+---
+
+# PART TWO
+
+???
+
+To be deleted
+
+---
+class: center, middle
+# Unexpected user inputs
+
+.left[* 'A QA tester walks into a bar...']
+.left[* `'F OFF'.to_i == 0`]
+.left[* `66`]
+.left[* Inline adjustments, and retrospective data analysis adjustments]
+
+---
+
+class: center, middle
+# Encourage user input
+
+---
+class: center, middle
+## Confirm that the text arrived
+
+## <<<RUBY CODE FROM APP HERE>>
+
+---
+class: center, middle
+## Ensure that the response was sensitive to the situation
+
+## <<RUBY CODE FROM APP HERE>>
+
+---
+class: center, middle
+## One step further because we can?
+---
+
+# Giphy integration
+
+.center[![You better not see this text](https://gph.is/1aPAh1Z)]
+---
+
+## Hook up response
+
+## <<RUBY CODE FROM APP HERE, AND SHOW API ETC>>
+
+---
+
+## Ensure that the response was sensitive to the situation
+
+## <<RUBY CODE FROM APP HERE>>
+
+---
+
+## Example sensitive GIFS:
+
+## GIFS HERE
+
+---
+
+# PART THREE
+
+To be deleted
+
+---
+class: center, middle
+# 3. Outcomes and retrospectives
+---
+class: center, middle
+# How we view pain
+
+.left[* ]
+
+---
+
+# PART FOUR
+
+To be deleted
+
+---
+class: center, middle
+# 4. Using our superpower, for good
+
+---
+class: center, middle
+## It's not a choice between 'working for the man' and 'toy projects'
+## Not everyone can do what you do
+## What is a few minutes of mindless scripting for you may be life changing for someone else
+## Your gift was not just to argue with fellow employees over antipatterns on PRs
+
+---
+
+# Wrapup:
+
+1. Lay out a non-business 'problem' through a story
+2. Discuss attacking that problem with the help of 'Ruby' 🍖
+3. Cover outcomes and retrospective observations
+4. Underline the importance of using your Ruby 'superpower' ❤️
+
+---
+
+# Thanks for your time!
+
+## schwad.github.io (slides will be published here)
+## @schwad4hd14 (twitter)
+## github.com/schwad
+## nicholas.schwaderer@gmail.com
+
+---
+
+
+# END
+
+To be deleted
+
 ---
 
 ## unit of measure, millibar vs. inches and what is ACTUALLY metric. make america joke.
@@ -126,6 +248,7 @@ class: center, middle
 ## setting up the app
 ## twilio
 ## why no web interface
+## Do a slide about hospital stay before THEN do machine learning
 ## Handling user error
 
 ---
