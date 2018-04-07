@@ -120,7 +120,7 @@
       .left[# Pain: nearly unpredictable]
       --
       .left[# Pressure systems: very predictable]
-      --
+      ---
       class: center, middle
       # Sit down at the negotiating table
       # 😼 😈
@@ -139,15 +139,291 @@
 
       ---
       class: center, middle
-      # 2. Solving this problem, with the aid of Ruby
+      # 2. Solving this problem, with the aid of Ruby & Twilio
+
+      --
+
+      # Goal: extract as many data points with live pressure and pain readings as possible for processing at the end of the process.
+
       ---
 
-      ## unit of measure, millibar vs. inches and what is ACTUALLY metric. make america joke.
+      # Setting up the Twilio Interface
+      .center[# 👀]
+
+      ???
+
+      Twilio Chunk, talk about why twilio
+      ---
+
+      # A web UI for this application was out of scope.
+
+      ---
+
+      # DISCLAIMER:
+      --
+      .center[## I am NOT a Twilio API expert or genius-]
+      --
+      .center[## That's the point.]
+      ---
+
+      # Twilio has some of the most out-of-the-box Ruby-Friendly documentation I have ever seen
+
+      .center[![Twilio](images/twilio-example.png)]
+
+      ???
+
+      That's how I was able to go from basically no Twilio experience at all, to spinning up a fully functioning Rails app.
+      ---
+
+      # Fast setup - focus on the actual problem at hand and not the integration.
+      --
+      ## Sign up, get your number, get your API Keys, get started
+      --
+      ```ruby
+      # Taken directly from twilio documentation
+      require 'twilio-ruby'
+
+      account_sid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" # Your Account SID from www.twilio.com/console
+      auth_token = "your_auth_token"   # Your Auth Token from www.twilio.com/console
+
+      @client = Twilio::REST::Client.new account_sid, auth_token
+      message = @client.messages.create(
+          body: "Hello from Ruby",
+          to: "+12345678901",    # Replace with your phone number
+          from: "+12345678901")  # Replace with your Twilio number
+
+      puts message.sid
+      ```
+
+      ---
+
+      # Additional considerations for Rails...
+
+      ---
+      # Weather Underground
+
+      .center[[!wu-logo](images/wu-logo.png)]
+
+      ---
+      ## sdague/weather-underground.rb
+
+      .center[[!wu-gem](images/wund-gem.png)]
+
+      ---
+
+      # Side note - units of measure for barometric pressure:
+
+      * SI: 101kPa (1 pascal = 1 newton per square metre, 1 N/m2)
+      * USA: 15psi
+      * Inches of Mercury: 29.53"
+      * Millibars: 1013.25 mbar 🤔
+      * Atm: 1
+
+      ---
+
+      .center[# Rails Backend - deployed on Heroku]
+
+      ???
+
+      Data modeling chunk
+
+      ---
+
+      # Simple object
+
+      ```ruby
+      #<DataPoint:0x00000005e89a18> {
+                           :id => 115,
+          :barometric_pressure => 1014.56146291907,
+                   :pain_level => 4.0,
+                   :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
+                   :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
+      }
+      ```
+
+      ---
+
+      # Simple object
+
+      ```ruby
+      #<DataPoint:0x00000005e89a18> {
+                           :id => 115,
+          :barometric_pressure => 1014.56146291907, # <---- What I really care about
+                   :pain_level => 4.0,              # <----
+                   :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
+                   :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
+      }
+      ```
+
+      ---
+
+      # Learning to interact with the user, the most difficult part
+
+      ---
+
+      # The core flow:
+
+      * Random messaging 5x/day ✉️
+      * Capture pain reading 📈
+      * Marry reading to live barometric pressure 🌪
+      * Handle as many edge cases as possible 😰
+
+      ???
+
+      Explain the randomness of the flow with a rake task here.
+
+      ---
+
+      class: center, middle
+      # Unexpected user inputs
+      --
+      .left[* `'F OFF'`]
+      ---
+      class: center, middle
+      # Unexpected user inputs
+      .left[* `'F OFF'.to_i == 0`]
+      --
+      ```ruby
+      if invalid_entry_response
+        "Huh. Okay. Well, #{pain_level} is not going to get recorded in this system. You know I have the power to text nick with what you are saying if you are TOO naughty."
+      ```
+      --
+      .left[* `66`]
+      --
+      .left[* Inline adjustments, and retrospective data analysis adjustments]
+
+      ???
+
+      Some things were dealt with with inline realtime improvements and some with data sanitizing at the end.
+
+      ---
+
+      class: center, middle
+      # Encourage user input
+
+      ---
+      class: center, middle
+      ## Confirm that the text arrived
+
+      ## <<<RUBY CODE FROM APP HERE>>
+
+      ---
+      class: center, middle
+      ## Ensure that the response was sensitive to the situation
+
+      ## <<RUBY CODE FROM APP HERE>>
+
+      ---
+      class: center, middle
+      ## One step further because we can?
+      ---
+
+      # Giphy integration
+
+      .center[![You better not see this text](https://gph.is/1aPAh1Z)]
+      ---
+
+      ## Hook up response
+
+      ## <<RUBY CODE FROM APP HERE, AND SHOW API ETC>>
+
+      ---
+
+      ## Ensure that the response was sensitive to the situation
+
+      ## <<RUBY CODE FROM APP HERE>>
+
+      ---
+
+      ## Example sensitive GIFS:
+
+      ## GIFS HERE
+
+      ---
+
+      # PART THREE
+
+      To be deleted
+
+      ---
+      class: center, middle
+      # 3. Outcomes and retrospectives
+      ---
+      class: center, middle
+      # How we view pain
+
+      .left[* Pain is incredibly subjective]
+      .left[* Hospital stay tried to make it objective]
+      .left[* Laura had become *very* good at monitoring pain to her standard]
+      .left[* !>5? no relief for you]
+      .left[* Adjustment for the race to the top]
+
+      ---
+      class: center, middle
+      # Making things mobile
+
+      .left[* Since we traveled very little during this time, I would manually reset the coordinates when we visited family elsewhere, etc]
+      .left[* This would benefit from location tracking which I was reluctant to do, and wouldn't want to build a native app just to have that]
+
+      ---
+      class: center, middle
+      # Running this with a bit of machine learning
+
+      ---
+
+      # <<INCLUDE GRAPH HERE>>
+
+      ---
+      class: center, middle
+      # Conclusions
+
+      .left{*}
+
+      ???
+
+      Spend a day THOROUGHLY running through these numbers again, changing if need be
+
+      ---
+      class: center, middle
+      # 4. Using our superpower, for good
+
+      ---
+      class: center, middle
+      ## It's not a choice between 'working for the man' and 'toy projects'
+      ## Not everyone can do what you do
+      ## What is a few minutes of mindless scripting for you may be life changing for someone else
+      ## Your gift was not just to argue with fellow employees over antipatterns on PRs
+
+      ---
+
+      # Wrapup:
+
+      1. Lay out a non-business 'problem' through a story
+      2. Discuss attacking that problem with the help of 'Ruby' 🍖
+      3. Cover outcomes and retrospective observations
+      4. Underline the importance of using your Ruby 'superpower' ❤️
+
+      ---
+
+      # Thanks for your time!
+
+      ## schwad.github.io (slides will be published here)
+      ## @schwad4hd14 (twitter)
+      ## github.com/schwad
+      ## nicholas.schwaderer@gmail.com
+
+      ---
+
+
+      # END
+
+      To be deleted
+
+      ---
+
       ## GOAL: forecasting someday
       ## setting up the app
-      ## twilio
-      ## why no web interface
-      ## Handling user error
+      ## Do a slide about hospital stay before THEN do machine learning
 
       ---
 
@@ -162,6 +438,16 @@
       ## However, never under a 4 under x
 
       ---
+
+      # GENERAL RESOURCES FOR SELF
+
+      --> styling remark
+
+
+      --> code notes
+
+      ---
+
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>

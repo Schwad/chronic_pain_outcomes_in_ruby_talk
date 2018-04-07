@@ -118,28 +118,162 @@ Striking a deal with laura. It's all about compromise.
 
 ---
 class: center, middle
-# 2. Solving this problem, with the aid of Ruby
+# 2. Solving this problem, with the aid of Ruby & Twilio
+
+--
+
+# Goal: extract as many data points with live pressure and pain readings as possible for processing at the end of the process.
+
+---
+
+# Setting up the Twilio Interface
+.center[# 👀]
 
 ???
 
-For the next few parts, I will use more comprehensive, longer slides. As I get used to them I can break them out.
+Twilio Chunk, talk about why twilio
+---
 
-# PART TWO
+# A web UI for this application was out of scope.
+
+---
+
+# DISCLAIMER:
+--
+.center[## I am NOT a Twilio API expert or genius-]
+--
+.center[## That's the point.]
+---
+
+# Twilio has some of the most out-of-the-box Ruby-Friendly documentation I have ever seen
+
+.center[![Twilio](images/twilio-example.png)]
+
 ???
 
-To be deleted
+That's how I was able to go from basically no Twilio experience at all, to spinning up a fully functioning Rails app.
+---
+
+# Fast setup - focus on the actual problem at hand and not the integration.
+--
+## Sign up, get your number, get your API Keys, get started
+--
+```ruby
+# Taken directly from twilio documentation
+require 'twilio-ruby'
+
+account_sid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" # Your Account SID from www.twilio.com/console
+auth_token = "your_auth_token"   # Your Auth Token from www.twilio.com/console
+
+@client = Twilio::REST::Client.new account_sid, auth_token
+message = @client.messages.create(
+    body: "Hello from Ruby",
+    to: "+12345678901",    # Replace with your phone number
+    from: "+12345678901")  # Replace with your Twilio number
+
+puts message.sid
+```
+
+---
+
+# Additional considerations for Rails...
+
+---
+# Weather Underground
+
+.center[[!wu-logo](images/wu-logo.png)]
+
+---
+## sdague/weather-underground.rb
+
+.center[[!wu-gem](images/wund-gem.png)]
+
+---
+
+# Side note - units of measure for barometric pressure:
+
+* SI: 101kPa (1 pascal = 1 newton per square metre, 1 N/m2)
+* USA: 15psi
+* Inches of Mercury: 29.53"
+* Millibars: 1013.25 mbar 🤔
+* Atm: 1
+
+---
+
+.center[# Rails Backend - deployed on Heroku]
+
+???
+
+Data modeling chunk
+
+---
+
+# Simple object
+
+```ruby
+#<DataPoint:0x00000005e89a18> {
+                     :id => 115,
+    :barometric_pressure => 1014.56146291907,
+             :pain_level => 4.0,
+             :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
+             :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
+}
+```
+
+---
+
+# Simple object
+
+```ruby
+#<DataPoint:0x00000005e89a18> {
+                     :id => 115,
+    :barometric_pressure => 1014.56146291907, # <---- What I really care about
+             :pain_level => 4.0,              # <----
+             :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
+             :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
+}
+```
+
+---
+
+# Learning to interact with the user, the most difficult part
+
+---
+
+# The core flow:
+
+* Random messaging 5x/day ✉️
+* Capture pain reading 📈
+* Marry reading to live barometric pressure 🌪
+* Handle as many edge cases as possible 😰
+
+???
+
+Explain the randomness of the flow with a rake task here.
+
+---
+
+class: center, middle
+# Unexpected user inputs
+--
+.left[* `'F OFF'`]
 ---
 class: center, middle
 # Unexpected user inputs
-
-.left[* 'A QA tester walks into a bar...']
 .left[* `'F OFF'.to_i == 0`]
+--
 ```ruby
 if invalid_entry_response
   "Huh. Okay. Well, #{pain_level} is not going to get recorded in this system. You know I have the power to text nick with what you are saying if you are TOO naughty."
 ```
+--
 .left[* `66`]
+--
 .left[* Inline adjustments, and retrospective data analysis adjustments]
+
+???
+
+Some things were dealt with with inline realtime improvements and some with data sanitizing at the end.
 
 ---
 
@@ -169,27 +303,78 @@ class: center, middle
 ---
 
 ## Hook up response
+```ruby
+type = ['funny', 'cat', 'dancing'].sample
+gif = RestClient.get("https://api.giphy.com/v1/gifs/search?api_key=#{api_key}=#{type}&limit=25&offset=0&rating=G&lang=en")
+selector = (0..23).to_a.sample
+"Saved! #{JSON.parse(gif)['data'][selector]['bitly_gif_url']}"
+```
 
-## <<RUBY CODE FROM APP HERE, AND SHOW API ETC>>
+[!catgif](images/cat.gif)
 
 ---
 
 ## Ensure that the response was sensitive to the situation
 
-## <<RUBY CODE FROM APP HERE>>
+```ruby
+if pain_level.to_f >= 7.0
+  painful_message            # Note: Gifs were *never* appropriate on high-pain days.
+elsif pain_level.to_f < 4.0
+  [less_pain_message, gif_message].sample
+else
+  [middle_pain_message, gif_message].sample
+end
+```
 
 ---
+# Light hearted on the easier days
 
-## Example sensitive GIFS:
+```ruby
+def less_pain_message
+  [
+    'Successfully saved. Thanks for putting up with this app, it means a lot to nick',
+    'Data has been logged. Wow, we are gonna have a good chunk of data points!',
+    'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!',
+    'Saved! Hope that your pain levels stay low bee bop!',
+    'Saved- fingers crossed your numbers stay good',
+    'Boom! Loving those low numbers. Hope it stays low!',
+    'Got it saved. Wonder if the pressure is working in your favor?'
+  ].sample
+end
+```
+---
+# Light hearted on the easier days
 
-## GIFS HERE
-
+```ruby
+def less_pain_message
+  [
+    'Successfully saved. Thanks for putting up with this app, it means a lot to nick',
+    'Data has been logged. Wow, we are gonna have a good chunk of data points!',
+    'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!', # <---- My favorite 🙂
+    'Saved! Hope that your pain levels stay low bee bop!',
+    'Saved- fingers crossed your numbers stay good',
+    'Boom! Loving those low numbers. Hope it stays low!',
+    'Got it saved. Wonder if the pressure is working in your favor?'
+  ].sample
+end
+```
 ---
 
-# PART THREE
+# Support on the rough days
 
-To be deleted
-
+```ruby
+def painful_message
+  ['This saved, but honey are you okay? Tell nick you just wanna chill tonight.',
+    'I have got this in the system. Sorry you are hurting :(',
+    'Saved successfully. I hope you are not fed up with this app, just know that the information you provide could be really, really helpful.',
+    'Logged! Fingers crossed that these numbers will go down after the surgery...',
+    'Saved. Thank you for being so good about sending this data in...',
+    'Got it. Be sure to take it easy and not push yourself if you are sore!',
+    'You should take a night off on the couch and make nick cook and clean and get you lots of tea. Modern Family night?'
+  ].sample
+end
+```
+---
 ---
 class: center, middle
 # 3. Outcomes and retrospectives
@@ -204,6 +389,10 @@ class: center, middle
 .left[* Adjustment for the race to the top]
 
 ---
+class: center, middle
+
+#
+
 class: center, middle
 # Making things mobile
 
@@ -227,12 +416,6 @@ class: center, middle
 ???
 
 Spend a day THOROUGHLY running through these numbers again, changing if need be
-
----
-
-# PART FOUR
-
-To be deleted
 
 ---
 class: center, middle
@@ -272,13 +455,9 @@ To be deleted
 
 ---
 
-## unit of measure, millibar vs. inches and what is ACTUALLY metric. make america joke.
 ## GOAL: forecasting someday
 ## setting up the app
-## twilio
-## why no web interface
 ## Do a slide about hospital stay before THEN do machine learning
-## Handling user error
 
 ---
 
