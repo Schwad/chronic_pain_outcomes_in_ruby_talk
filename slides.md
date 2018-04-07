@@ -124,20 +124,20 @@ class: center, middle
 
 For the next few parts, I will use more comprehensive, longer slides. As I get used to them I can break them out.
 
----
-
 # PART TWO
-
 ???
 
 To be deleted
-
 ---
 class: center, middle
 # Unexpected user inputs
 
 .left[* 'A QA tester walks into a bar...']
 .left[* `'F OFF'.to_i == 0`]
+```ruby
+if invalid_entry_response
+  "Huh. Okay. Well, #{pain_level} is not going to get recorded in this system. You know I have the power to text nick with what you are saying if you are TOO naughty."
+```
 .left[* `66`]
 .left[* Inline adjustments, and retrospective data analysis adjustments]
 
@@ -202,6 +202,13 @@ class: center, middle
 .left[* Laura had become *very* good at monitoring pain to her standard]
 .left[* !>5? no relief for you]
 .left[* Adjustment for the race to the top]
+
+---
+class: center, middle
+# Making things mobile
+
+.left[* Since we traveled very little during this time, I would manually reset the coordinates when we visited family elsewhere, etc]
+.left[* This would benefit from location tracking which I was reluctant to do, and wouldn't want to build a native app just to have that]
 
 ---
 class: center, middle
@@ -284,5 +291,14 @@ To be deleted
 ## Final conclusions only 24% going together
 
 ## However, never under a 4 under x
+
+---
+
+# GENERAL RESOURCES FOR SELF
+
+--> styling remark
+
+
+--> code notes
 
 ---
