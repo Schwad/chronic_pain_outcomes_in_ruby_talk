@@ -282,20 +282,7 @@ class: center, middle
 
 ---
 class: center, middle
-## Confirm that the text arrived
-
-## <<<RUBY CODE FROM APP HERE>>
-
----
-class: center, middle
 ## Ensure that the response was sensitive to the situation
-
-## <<RUBY CODE FROM APP HERE>>
-
----
-class: center, middle
-## One step further because we can?
----
 
 # Giphy integration
 
@@ -318,7 +305,8 @@ selector = (0..23).to_a.sample
 
 ```ruby
 if pain_level.to_f >= 7.0
-  painful_message            # Note: Gifs were *never* appropriate on high-pain days.
+  painful_message            
+  # Note: Gifs were *never* appropriate on high-pain days.
 elsif pain_level.to_f < 4.0
   [less_pain_message, gif_message].sample
 else
@@ -350,7 +338,8 @@ def less_pain_message
   [
     'Successfully saved. Thanks for putting up with this app, it means a lot to nick',
     'Data has been logged. Wow, we are gonna have a good chunk of data points!',
-    'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!', # <---- My favorite 🙂
+    'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!',
+    # ^^^^ My favorite 🙂
     'Saved! Hope that your pain levels stay low bee bop!',
     'Saved- fingers crossed your numbers stay good',
     'Boom! Loving those low numbers. Hope it stays low!',

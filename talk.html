@@ -324,27 +324,78 @@
       ---
 
       ## Hook up response
+      ```ruby
+      type = ['funny', 'cat', 'dancing'].sample
+      gif = RestClient.get("https://api.giphy.com/v1/gifs/search?api_key=#{api_key}=#{type}&limit=25&offset=0&rating=G&lang=en")
+      selector = (0..23).to_a.sample
+      "Saved! #{JSON.parse(gif)['data'][selector]['bitly_gif_url']}"
+      ```
 
-      ## <<RUBY CODE FROM APP HERE, AND SHOW API ETC>>
+      [!catgif](images/cat.gif)
 
       ---
 
       ## Ensure that the response was sensitive to the situation
 
-      ## <<RUBY CODE FROM APP HERE>>
+      ```ruby
+      if pain_level.to_f >= 7.0
+        painful_message            # Note: Gifs were *never* appropriate on high-pain days.
+      elsif pain_level.to_f < 4.0
+        [less_pain_message, gif_message].sample
+      else
+        [middle_pain_message, gif_message].sample
+      end
+      ```
 
       ---
+      # Light hearted on the easier days
 
-      ## Example sensitive GIFS:
+      ```ruby
+      def less_pain_message
+        [
+          'Successfully saved. Thanks for putting up with this app, it means a lot to nick',
+          'Data has been logged. Wow, we are gonna have a good chunk of data points!',
+          'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!',
+          'Saved! Hope that your pain levels stay low bee bop!',
+          'Saved- fingers crossed your numbers stay good',
+          'Boom! Loving those low numbers. Hope it stays low!',
+          'Got it saved. Wonder if the pressure is working in your favor?'
+        ].sample
+      end
+      ```
+      ---
+      # Light hearted on the easier days
 
-      ## GIFS HERE
-
+      ```ruby
+      def less_pain_message
+        [
+          'Successfully saved. Thanks for putting up with this app, it means a lot to nick',
+          'Data has been logged. Wow, we are gonna have a good chunk of data points!',
+          'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!', # <---- My favorite 🙂
+          'Saved! Hope that your pain levels stay low bee bop!',
+          'Saved- fingers crossed your numbers stay good',
+          'Boom! Loving those low numbers. Hope it stays low!',
+          'Got it saved. Wonder if the pressure is working in your favor?'
+        ].sample
+      end
+      ```
       ---
 
-      # PART THREE
+      # Support on the rough days
 
-      To be deleted
-
+      ```ruby
+      def painful_message
+        ['This saved, but honey are you okay? Tell nick you just wanna chill tonight.',
+          'I have got this in the system. Sorry you are hurting :(',
+          'Saved successfully. I hope you are not fed up with this app, just know that the information you provide could be really, really helpful.',
+          'Logged! Fingers crossed that these numbers will go down after the surgery...',
+          'Saved. Thank you for being so good about sending this data in...',
+          'Got it. Be sure to take it easy and not push yourself if you are sore!',
+          'You should take a night off on the couch and make nick cook and clean and get you lots of tea. Modern Family night?'
+        ].sample
+      end
+      ```
+      ---
       ---
       class: center, middle
       # 3. Outcomes and retrospectives
@@ -359,6 +410,10 @@
       .left[* Adjustment for the race to the top]
 
       ---
+      class: center, middle
+
+      #
+
       class: center, middle
       # Making things mobile
 
