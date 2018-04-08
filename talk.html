@@ -4,13 +4,13 @@
     <title>Title</title>
     <meta charset="utf-8">
     <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Raleway);
+      @import url(https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
-      body { font-family: 'Droid Serif'; }
+      body { font-family: 'Raleway'; }
       h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
+        font-family: 'PT Serif';
         font-weight: normal;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
@@ -24,12 +24,13 @@
       ---
 
       class: center, middle
+      background-image: url(https://i.imgur.com/HxDCfxI.png)
+      background-size: cover;
 
       # Measuring Chronic Pain Outcomes with Ruby and Twilio
 
-      .left[![ruby](https://i.imgur.com/HxDCfxI.png)]
-      .right[![twilio](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)]
-
+      <!-- .left[![ruby](https://i.imgur.com/HxDCfxI.png)]
+      .right[![twilio](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)] -->
       ---
 
       # In order:
@@ -303,20 +304,7 @@
 
       ---
       class: center, middle
-      ## Confirm that the text arrived
-
-      ## <<<RUBY CODE FROM APP HERE>>
-
-      ---
-      class: center, middle
       ## Ensure that the response was sensitive to the situation
-
-      ## <<RUBY CODE FROM APP HERE>>
-
-      ---
-      class: center, middle
-      ## One step further because we can?
-      ---
 
       # Giphy integration
 
@@ -339,7 +327,8 @@
 
       ```ruby
       if pain_level.to_f >= 7.0
-        painful_message            # Note: Gifs were *never* appropriate on high-pain days.
+        painful_message
+        # Note: Gifs were *never* appropriate on high-pain days.
       elsif pain_level.to_f < 4.0
         [less_pain_message, gif_message].sample
       else
@@ -371,7 +360,8 @@
         [
           'Successfully saved. Thanks for putting up with this app, it means a lot to nick',
           'Data has been logged. Wow, we are gonna have a good chunk of data points!',
-          'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!', # <---- My favorite 🙂
+          'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!',
+          # ^^^^ My favorite 🙂
           'Saved! Hope that your pain levels stay low bee bop!',
           'Saved- fingers crossed your numbers stay good',
           'Boom! Loving those low numbers. Hope it stays low!',
@@ -396,7 +386,6 @@
       end
       ```
       ---
-      ---
       class: center, middle
       # 3. Outcomes and retrospectives
       ---
@@ -410,9 +399,6 @@
       .left[* Adjustment for the race to the top]
 
       ---
-      class: center, middle
-
-      #
 
       class: center, middle
       # Making things mobile
@@ -422,21 +408,46 @@
 
       ---
       class: center, middle
-      # Running this with a bit of machine learning
+      # How do we best process this information?
 
       ---
 
-      # <<INCLUDE GRAPH HERE>>
+      # Dump information into a two dimensional array
+
+      ```ruby
+      def valid_readings(pain_level)
+        pain_level > 0.0 && pain_level < 10.0
+      end
+
+      array = []
+      DataPoint.all.each do |dp|
+        array << [dp.barometric_pressure, dp.pain_level] if valid_readings(dp.pain_level)
+      end
+      ```
+      ---
+
+      # Write to CSV to share outside of the programming community
+
+      ```ruby
+      require 'csv'
+      CSV.open("laura_stats.csv", "w") do |csv|
+        array.map{|row| csv << row}
+      end
+      ```
+      ---
+
+      # Visualize with a Graph
+
+      ## Graph image here
 
       ---
-      class: center, middle
-      # Conclusions
 
-      .left{*}
+      # What is an SVM?
 
-      ???
+      definition
+      ---
 
-      Spend a day THOROUGHLY running through these numbers again, changing if need be
+      ## This is where I left off
 
       ---
       class: center, middle
@@ -500,6 +511,13 @@
 
 
       --> code notes
+
+      ---
+
+      # show images correctly
+      # correct formatting
+      # improve style?
+      # practice with it, rearrange as needed
 
       ---
 

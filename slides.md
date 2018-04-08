@@ -3,12 +3,13 @@ layout: true
 ---
 
 class: center, middle
+background-image: url(https://i.imgur.com/HxDCfxI.png)
+background-size: cover;
 
 # Measuring Chronic Pain Outcomes with Ruby and Twilio
 
-.left[![ruby](https://i.imgur.com/HxDCfxI.png)]
-.right[![twilio](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)]
-
+<!-- .left[![ruby](https://i.imgur.com/HxDCfxI.png)]
+.right[![twilio](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)] -->
 ---
 
 # In order:
@@ -364,7 +365,6 @@ def painful_message
 end
 ```
 ---
----
 class: center, middle
 # 3. Outcomes and retrospectives
 ---
@@ -378,9 +378,6 @@ class: center, middle
 .left[* Adjustment for the race to the top]
 
 ---
-class: center, middle
-
-#
 
 class: center, middle
 # Making things mobile
@@ -390,21 +387,46 @@ class: center, middle
 
 ---
 class: center, middle
-# Running this with a bit of machine learning
+# How do we best process this information?
 
 ---
 
-# <<INCLUDE GRAPH HERE>>
+# Dump information into a two dimensional array
+
+```ruby
+def valid_readings(pain_level)
+  pain_level > 0.0 && pain_level < 10.0
+end
+
+array = []
+DataPoint.all.each do |dp|
+  array << [dp.barometric_pressure, dp.pain_level] if valid_readings(dp.pain_level)
+end
+```
+---
+
+# Write to CSV to share outside of the programming community
+
+```ruby
+require 'csv'
+CSV.open("laura_stats.csv", "w") do |csv|
+  array.map{|row| csv << row}
+end
+```
+---
+
+# Visualize with a Graph
+
+## Graph image here
 
 ---
-class: center, middle
-# Conclusions
 
-.left{*}
+# What is an SVM?
 
-???
+definition
+---
 
-Spend a day THOROUGHLY running through these numbers again, changing if need be
+## This is where I left off
 
 ---
 class: center, middle
@@ -468,5 +490,12 @@ To be deleted
 
 
 --> code notes
+
+---
+
+# show images correctly
+# correct formatting
+# improve style?
+# practice with it, rearrange as needed
 
 ---
