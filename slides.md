@@ -421,12 +421,89 @@ end
 
 ---
 
-# What is an SVM?
+# SVM in Ruby
 
-definition
+.center[![blog-image](https://i.imgur.com/IB1YGUE.png)]
+
+???
+
+Support Vector Machine (SVM) is a supervised learning algorithm developed by Vladimir Vapnik and his co-workers at AT&T Bell Labs in the mid 90's.
+
+At their core, SVMs are a method for creating a predictor function from a set of training data where the function itself can be a binary, a multi-category, or even a general regression predictor. To accomplish this mathematical feat, SVMs find a hypersurface (for example, a plane in 2D) which attempts to split the positive and negative examples with the largest possible margin on all sides of the (hyper)plane.
 ---
 
-## This is where I left off
+# Standing on the shoulders of giants
+
+### (`daugaard/example-svm`)
+
+![repo-photo](https://i.imgur.com/UVskqfI.png)
+
+???
+
+Discuss finding blog post on ruby weekly
+
+---
+
+# Finding the 'best' C and Gamma values
+
+#![ruby-shot](https://i.imgur.com/L3OKGwB.png)
+
+???
+
+** Explain C parameter, and Gaussian paraemeter, also that we just care it's the two things we can tweak.
+
+The C parameter is similar to the regularization parameter λ we know from other machine learning models, only C is the inverse of λ. That is a larger C will give you lower bias and higher variance a model will have, where a low C will give you high bias and low variance.
+
+The Gamma parameter is a parameter specific to the Gaussian kernel (RBF in libsvm). The gamma parameter define how far a single training example will have influence. So that is how much influence will  a single training example have on examples that are further away from the training example.
+
+To find the optimal C and gamma parameters we are going to create a program that iterates through possible values of C and gamma, and measures the classification accuracy for each combination and finds the best combination. Lastly the program will test the selected combination of C and gamma on unknown data to measure its general classification accuracy.
+
+To do this we must now split our data into 3. A training dataset using to train the model, a validation dataset used to test combinations of C and gamma and select the best one, and lastly a test dataset used to test the model using the optimal C and gamma parameters to find the classification accuracy. We use a split of 70% training data, 15% validation data and 15% test data.
+
+---
+
+# Best results I could garner:
+
+.center[# `Test Generalization Accuracy: 24.43% - C=5, gamma=1`]
+
+---
+
+# What if I cared more about 'close' than 'exact?'
+```ruby
+correct = predicted.collect.with_index do |e,i|
+  if (e.to_f - validation_y_data[i].to_f).magnitude <= 1.0
+    1
+  else
+    0
+  end
+end.inject{ |sum,e| sum+e }
+```
+---
+# Within 1:
+## `Test Generalization Accuracy: 60.34%`
+# Within 2:
+## `Test Generalization Accuracy: 89.66%`
+
+---
+# One more takeaway
+
+.center[![graph](https://i.imgur.com/dm7Sp4M.png)]
+
+???
+
+Nothing under 4 over certain pressure
+
+---
+
+# Other thoughts on future processing:
+
+##* Measure 'closeness'
+##* Increase dataset size
+##* Publish dataset for analysis from fellow Rubyists
+
+---
+
+# WIP: Forecasting
 
 ---
 class: center, middle
@@ -434,10 +511,13 @@ class: center, middle
 
 ---
 class: center, middle
-## It's not a choice between 'working for the man' and 'toy projects'
-## Not everyone can do what you do
-## What is a few minutes of mindless scripting for you may be life changing for someone else
-## Your gift was not just to argue with fellow employees over antipatterns on PRs
+* It's not a choice between 'working for the man' and 'toy projects'
+--
+* Not everyone can do what you do
+--
+* What is a few minutes of mindless scripting for you may be life changing for someone else
+--
+* New tooling opportunities
 
 ---
 
@@ -452,17 +532,16 @@ class: center, middle
 
 # Thanks for your time!
 
-## schwad.github.io (slides will be published here)
-## @schwad4hd14 (twitter)
-## github.com/schwad
-## nicholas.schwaderer@gmail.com
+### schwad.github.io (slides will be published here)
+### @schwad4hd14 (twitter)
+### github.com/schwad
+### nicholas.schwaderer@gmail.com
+### Let's grow this project
 
 ---
 
 
 # END
-
-To be deleted
 
 ---
 
@@ -493,9 +572,12 @@ To be deleted
 
 ---
 
+## READ UP ON SVMS, C AND GAMMA SHIT IN GENERAL TO AT LEAST BE HALF AN AUTHORITY ON IT. MONDAY
+
 # show images correctly
 # correct formatting
 # improve style?
 # practice with it, rearrange as needed
+# practice dual monitors and also pimping out notes
 
 ---
