@@ -148,7 +148,7 @@ Twilio Chunk, talk about why twilio
 
 # Twilio has some of the most out-of-the-box Ruby-Friendly documentation I have ever seen
 
-.center[![Twilio](images/twilio-example.png)]
+.center[![Twilio](https://i.imgur.com/PUjILMT.png)]
 
 ???
 
@@ -182,12 +182,12 @@ puts message.sid
 ---
 # Weather Underground
 
-.center[[!wu-logo](images/wu-logo.png)]
+.center[![wu-logo](https://i.imgur.com/u1T8vO4.png)]
 
 ---
 ## sdague/weather-underground.rb
 
-.center[[!wu-gem](images/wund-gem.png)]
+.center[![wu-gem](https://i.imgur.com/LiN8KWL.png)]
 
 ---
 
@@ -417,7 +417,7 @@ end
 
 # Visualize with a Graph
 
-## Graph image here
+.center[![graph](https://i.imgur.com/dm7Sp4M.png)]
 
 ---
 
