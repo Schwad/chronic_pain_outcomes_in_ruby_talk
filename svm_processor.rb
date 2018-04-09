@@ -19,7 +19,7 @@ y_data = final_dataset.map{|element| element[1]}
 # Divide data into a training set and test set
 validation_size_percentange = 15.0 # 15%
 validation_set_size = x_data.size * (validation_size_percentange/100.to_f)
-test_size_percentange = 20.0 # 15%
+test_size_percentange = 15.0 # 15%
 test_set_size = x_data.size * (test_size_percentange/100.to_f)
 
 
@@ -101,6 +101,8 @@ predicted = []
 test_x_data.each do |params|
   predicted.push( model.predict(params) )
 end
+
+binding.pry
 
 correct = predicted.collect.with_index do |e,i|
   if (e.to_f - test_y_data[i].to_f).magnitude <= 1.0

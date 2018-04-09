@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Measuring Chronic Pain Outcomes with Twilio and Ruby</title>
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Raleway);
@@ -9,71 +9,103 @@
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
       body { font-family: 'Raleway'; }
-      h1, h2, h3 {
+      h1, h2 {
         font-family: 'PT Serif';
         font-weight: normal;
       }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      h3 {
+        font-family: 'Raleway';
+        font-weight: normal;
+      }
+      .strong {
+        font-weight: bolder;
+      }
+      .big {
+        font-size: 30px;
+      }
+      .bigger {
+        font-size: 40px;
+      }
+      .biggest {
+        font-size: 50px;
+      }
+      .big-bold {
+        font-size: 40px;
+        font-weight: bolder;
+      }
+      .white {
+        color: white;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; font-size: 20px; }
     </style>
   </head>
   <body>
     <textarea id="source">
 
-      layout: true
+      name: primary-slide
 
       ---
-
-      class: center, middle
-      background-image: url(https://i.imgur.com/HxDCfxI.png)
-      background-size: cover;
+      class: left
 
       # Measuring Chronic Pain Outcomes with Ruby and Twilio
-
-      <!-- .left[![ruby](https://i.imgur.com/HxDCfxI.png)]
-      .right[![twilio](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)] -->
+      .left[![ruby](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)]
       ---
+      template: primary-slide
 
-      # In order:
-
-      1. Lay out a non-business 'problem' through a story
+      # Order of the day:
 
       --
 
-      2. Discuss attacking that problem with the help of 'Ruby' 🍖
+      ###1. Lay out a non-business 'problem' through a story
 
       --
 
-      3. Cover outcomes and retrospective observations
+      ###2. Discuss attacking that problem with the help of Ruby .big[🍖]
 
       --
 
-      4. Underline the importance of using your Ruby 'superpower' ❤️
+      ###3. Cover outcomes and retrospective observations
+
+      --
+
+      ###4. Underline the importance of using your Ruby <u>.strong['superpower']</u> .big[❤️]
 
       ---
+      template: primary-slide
+      class: center, middle
 
-      # Who am I?
-
-      ---
-      background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/0f/b3/68/f8/vista-view.jpg)
-      # I used to live here
+      #Who am I?
 
       ---
-      background-image: url(http://www.opc-cornwall.org/Par_new/l_m/photos/lostwithiel1.jpg)
-      # Now I live here
+      template: primary-slide
+      class: top, right
+      background-image: url(https://i.imgur.com/VDbyqsS.jpg)
+      background-size: cover
+      ## .white[.strong[I used to live here]]
 
       ---
+      template: primary-slide
+      background-image: url(https://i.imgur.com/XEMQDAz.jpg)
+      background-size: cover
+      class: bottom, left
+      # .white[.strong[Now I live here]]
+
+      ---
+      template: primary-slide
 
       # And I work here
 
       .center[![This is my image](https://pbs.twimg.com/profile_images/1122058292/ohq_avatar_400x400.jpg)]
 
       ---
+      template: primary-slide
 
       # Where I do this
 
       .center[![If you are seeing this text everything has gone horribly wrong.](http://plenglish.com/images/2017/diciembre/17/barcos.jpg)]
 
       ---
+      template: primary-slide
       class: center, middle
       # Today's talk has nothing to do about where I work.
 
@@ -81,10 +113,12 @@
       .center[![image of laura and I](https://i.imgur.com/nEKCRhY.jpg)]
 
       ---
+      template: primary-slide
 
       # 1. The problem
 
       ---
+      template: primary-slide
 
       # Summer 2017
 
@@ -94,12 +128,14 @@
       # 🤕 🚑
 
       ---
+      template: primary-slide
 
       # What is Avascular Necrosis?
 
       .center[![This is my image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjCsNCxbPCoyFQg6bc3e9Hx_dDptogJSe4oCaH0zSrgOQpig0YzQ)]
 
       ---
+      template: primary-slide
 
       .center[# ❗️]
 
@@ -108,6 +144,7 @@
       Dr. Said that the pressure swings will affect joint pain.
 
       ---
+      template: primary-slide
 
       class: center, middle
       # ❓
@@ -122,6 +159,7 @@
       --
       .left[# Pressure systems: very predictable]
       ---
+      template: primary-slide
       class: center, middle
       # Sit down at the negotiating table
       # 😼 😈
@@ -131,6 +169,7 @@
       Striking a deal with laura. It's all about compromise.
 
       ---
+      template: primary-slide
 
       # She would help me track and measure her pain 📈 ✔️
 
@@ -139,6 +178,7 @@
       # I would start counting my caloric intake every day 😱 🍪
 
       ---
+      template: primary-slide
       class: center, middle
       # 2. Solving this problem, with the aid of Ruby & Twilio
 
@@ -147,6 +187,7 @@
       # Goal: extract as many data points with live pressure and pain readings as possible for processing at the end of the process.
 
       ---
+      template: primary-slide
 
       # Setting up the Twilio Interface
       .center[# 👀]
@@ -155,10 +196,12 @@
 
       Twilio Chunk, talk about why twilio
       ---
+      template: primary-slide
 
       # A web UI for this application was out of scope.
 
       ---
+      template: primary-slide
 
       # DISCLAIMER:
       --
@@ -166,6 +209,7 @@
       --
       .center[## That's the point.]
       ---
+      template: primary-slide
 
       # Twilio has some of the most out-of-the-box Ruby-Friendly documentation I have ever seen
 
@@ -175,6 +219,7 @@
 
       That's how I was able to go from basically no Twilio experience at all, to spinning up a fully functioning Rails app.
       ---
+      template: primary-slide
 
       # Fast setup - focus on the actual problem at hand and not the integration.
       --
@@ -197,20 +242,24 @@
       ```
 
       ---
+      template: primary-slide
 
       # Additional considerations for Rails...
 
       ---
+      template: primary-slide
       # Weather Underground
 
       .center[![wu-logo](https://i.imgur.com/u1T8vO4.png)]
 
       ---
+      template: primary-slide
       ## sdague/weather-underground.rb
 
       .center[![wu-gem](https://i.imgur.com/LiN8KWL.png)]
 
       ---
+      template: primary-slide
 
       # Side note - units of measure for barometric pressure:
 
@@ -221,6 +270,7 @@
       * Atm: 1
 
       ---
+      template: primary-slide
 
       .center[# Rails Backend - deployed on Heroku]
 
@@ -229,6 +279,7 @@
       Data modeling chunk
 
       ---
+      template: primary-slide
 
       # Simple object
 
@@ -243,24 +294,29 @@
       ```
 
       ---
+      template: primary-slide
 
       # Simple object
 
       ```ruby
       #<DataPoint:0x00000005e89a18> {
                            :id => 115,
-          :barometric_pressure => 1014.56146291907, # <---- What I really care about
-                   :pain_level => 4.0,              # <----
+          :barometric_pressure => 1014.56146291907, # <---
+          template: primary-slide- What I really care about
+                   :pain_level => 4.0,              # <---
+                   template: primary-slide-
                    :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
                    :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
       }
       ```
 
       ---
+      template: primary-slide
 
       # Learning to interact with the user, the most difficult part
 
       ---
+      template: primary-slide
 
       # The core flow:
 
@@ -274,12 +330,14 @@
       Explain the randomness of the flow with a rake task here.
 
       ---
+      template: primary-slide
 
       class: center, middle
       # Unexpected user inputs
       --
       .left[* `'F OFF'`]
       ---
+      template: primary-slide
       class: center, middle
       # Unexpected user inputs
       .left[* `'F OFF'.to_i == 0`]
@@ -298,11 +356,13 @@
       Some things were dealt with with inline realtime improvements and some with data sanitizing at the end.
 
       ---
+      template: primary-slide
 
       class: center, middle
       # Encourage user input
 
       ---
+      template: primary-slide
       class: center, middle
       ## Ensure that the response was sensitive to the situation
 
@@ -310,6 +370,7 @@
 
       .center[![You better not see this text](https://gph.is/1aPAh1Z)]
       ---
+      template: primary-slide
 
       ## Hook up response
       ```ruby
@@ -322,6 +383,7 @@
       [!catgif](images/cat.gif)
 
       ---
+      template: primary-slide
 
       ## Ensure that the response was sensitive to the situation
 
@@ -337,6 +399,7 @@
       ```
 
       ---
+      template: primary-slide
       # Light hearted on the easier days
 
       ```ruby
@@ -353,6 +416,7 @@
       end
       ```
       ---
+      template: primary-slide
       # Light hearted on the easier days
 
       ```ruby
@@ -370,6 +434,7 @@
       end
       ```
       ---
+      template: primary-slide
 
       # Support on the rough days
 
@@ -386,9 +451,11 @@
       end
       ```
       ---
+      template: primary-slide
       class: center, middle
       # 3. Outcomes and retrospectives
       ---
+      template: primary-slide
       class: center, middle
       # How we view pain
 
@@ -399,6 +466,7 @@
       .left[* Adjustment for the race to the top]
 
       ---
+      template: primary-slide
 
       class: center, middle
       # Making things mobile
@@ -407,10 +475,12 @@
       .left[* This would benefit from location tracking which I was reluctant to do, and wouldn't want to build a native app just to have that]
 
       ---
+      template: primary-slide
       class: center, middle
       # How do we best process this information?
 
       ---
+      template: primary-slide
 
       # Dump information into a two dimensional array
 
@@ -425,6 +495,7 @@
       end
       ```
       ---
+      template: primary-slide
 
       # Write to CSV to share outside of the programming community
 
@@ -435,12 +506,14 @@
       end
       ```
       ---
+      template: primary-slide
 
       # Visualize with a Graph
 
       .center[![graph](https://i.imgur.com/dm7Sp4M.png)]
 
       ---
+      template: primary-slide
 
       # SVM in Ruby
 
@@ -452,6 +525,7 @@
 
       At their core, SVMs are a method for creating a predictor function from a set of training data where the function itself can be a binary, a multi-category, or even a general regression predictor. To accomplish this mathematical feat, SVMs find a hypersurface (for example, a plane in 2D) which attempts to split the positive and negative examples with the largest possible margin on all sides of the (hyper)plane.
       ---
+      template: primary-slide
 
       # Standing on the shoulders of giants
 
@@ -464,6 +538,7 @@
       Discuss finding blog post on ruby weekly
 
       ---
+      template: primary-slide
 
       # Finding the 'best' C and Gamma values
 
@@ -482,12 +557,14 @@
       To do this we must now split our data into 3. A training dataset using to train the model, a validation dataset used to test combinations of C and gamma and select the best one, and lastly a test dataset used to test the model using the optimal C and gamma parameters to find the classification accuracy. We use a split of 70% training data, 15% validation data and 15% test data.
 
       ---
+      template: primary-slide
 
       # Best results I could garner:
 
       .center[# `Test Generalization Accuracy: 24.43% - C=5, gamma=1`]
 
       ---
+      template: primary-slide
 
       # What if I cared more about 'close' than 'exact?'
       ```ruby
@@ -500,12 +577,14 @@
       end.inject{ |sum,e| sum+e }
       ```
       ---
+      template: primary-slide
       # Within 1:
       ## `Test Generalization Accuracy: 60.34%`
       # Within 2:
       ## `Test Generalization Accuracy: 89.66%`
 
       ---
+      template: primary-slide
       # One more takeaway
 
       .center[![graph](https://i.imgur.com/dm7Sp4M.png)]
@@ -515,6 +594,7 @@
       Nothing under 4 over certain pressure
 
       ---
+      template: primary-slide
 
       # Other thoughts on future processing:
 
@@ -523,14 +603,17 @@
       ##* Publish dataset for analysis from fellow Rubyists
 
       ---
+      template: primary-slide
 
       # WIP: Forecasting
 
       ---
+      template: primary-slide
       class: center, middle
       # 4. Using our superpower, for good
 
       ---
+      template: primary-slide
       class: center, middle
       * It's not a choice between 'working for the man' and 'toy projects'
       --
@@ -541,6 +624,7 @@
       * New tooling opportunities
 
       ---
+      template: primary-slide
 
       # Wrapup:
 
@@ -550,6 +634,7 @@
       4. Underline the importance of using your Ruby 'superpower' ❤️
 
       ---
+      template: primary-slide
 
       # Thanks for your time!
 
@@ -560,17 +645,20 @@
       ### Let's grow this project
 
       ---
+      template: primary-slide
 
 
       # END
 
       ---
+      template: primary-slide
 
       ## GOAL: forecasting someday
       ## setting up the app
       ## Do a slide about hospital stay before THEN do machine learning
 
       ---
+      template: primary-slide
 
       ## Reformatting the iterations with regards to messaging user (3-4 slides of code)
 
@@ -583,6 +671,7 @@
       ## However, never under a 4 under x
 
       ---
+      template: primary-slide
 
       # GENERAL RESOURCES FOR SELF
 
@@ -592,6 +681,7 @@
       --> code notes
 
       ---
+      template: primary-slide
 
       ## READ UP ON SVMS, C AND GAMMA SHIT IN GENERAL TO AT LEAST BE HALF AN AUTHORITY ON IT. MONDAY
 
