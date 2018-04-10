@@ -29,6 +29,9 @@
       .biggest {
         font-size: 50px;
       }
+      .biggester {
+        font-size: 100px;
+      }
       .big-bold {
         font-size: 40px;
         font-weight: bolder;
@@ -36,7 +39,7 @@
       .white {
         color: white;
       }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; font-size: 20px; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; font-size: 23.5px; }
     </style>
   </head>
   <body>
@@ -100,9 +103,8 @@
       ---
       template: primary-slide
 
-      # Where I do this
-
-      .center[![If you are seeing this text everything has gone horribly wrong.](http://plenglish.com/images/2017/diciembre/17/barcos.jpg)]
+      background-image: url(http://plenglish.com/images/2017/diciembre/17/barcos.jpg)
+      background-size: cover
 
       ---
       template: primary-slide
@@ -110,34 +112,36 @@
       # Today's talk has nothing to do about where I work.
 
       --
-      .center[![image of laura and I](https://i.imgur.com/nEKCRhY.jpg)]
+      .center[![:scale 40%](https://i.imgur.com/nEKCRhY.jpg =20%)]
 
       ---
       template: primary-slide
-
-      # 1. The problem
+      class: center, middle
+      # .strong[1]
+      # The problem
 
       ---
       template: primary-slide
-
+      class: center, middle
       # Summer 2017
 
-      --
+      ---
 
       class: center, middle
-      # 🤕 🚑
+      .biggester[🤕 🚑]
 
       ---
       template: primary-slide
+      class: center
 
-      # What is Avascular Necrosis?
+      .center[# What is Avascular Necrosis?]
 
-      .center[![This is my image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjCsNCxbPCoyFQg6bc3e9Hx_dDptogJSe4oCaH0zSrgOQpig0YzQ)]
+      .center[![This is my image](https://i2.wp.com/shoulderelbow.org/wp-content/uploads/2016/09/avascular-necrosis-happens.jpg?resize=748%2C561&ssl=1)]
 
       ---
       template: primary-slide
-
-      .center[# ❗️]
+      class: center, middle
+      .biggester[❗️]
 
       ???
 
@@ -146,23 +150,25 @@
       ---
       template: primary-slide
 
-      class: center, middle
-      # ❓
-      # 🤔
+      class: center, top
+      .biggester[❓]
+
+      .biggester[🤔]
 
       ???
 
       My hypothesis
 
       --
-      .left[# Pain: nearly unpredictable]
+      ## Pain: nearly unpredictable
       --
-      .left[# Pressure systems: very predictable]
+
+      ## Pressure systems: <u>.strong[very]</u> predictable
       ---
       template: primary-slide
       class: center, middle
-      # Sit down at the negotiating table
-      # 😼 😈
+      # Negotiation time
+      ![:scale 90%](https://ak3.picdn.net/shutterstock/videos/3780503/thumb/1.jpg?i10c=img.resize(height:160))
 
       ???
 
@@ -180,57 +186,46 @@
       ---
       template: primary-slide
       class: center, middle
-      # 2. Solving this problem, with the aid of Ruby & Twilio
+      # .strong[2]
+      # Solving this problem, with the aid of Ruby & Twilio
 
+      ---
+
+      # .center[Goal]
       --
 
-      # Goal: extract as many data points with live pressure and pain readings as possible for processing at the end of the process.
+      * ### Identify as many pain readings as possible
+      --
+
+      * ### Marry pain reading to barometrict pressure
+      --
+
+      * ### Process readings for assessment & forecasting
+
+      ---
+      template: primary-slide
+      class: middle, center
+      # Set Up
+      ---
+      template: primary-slide
+      class: center, top
+      # .center[A Web UI for this application was out of scope. .biggest[🚫]]
+      --
+
+      <br>
+      # Solution: Twilio & SMS
+      ![:scale 50%](https://www.twilio.com/marketing/bundles/company-brand/img/logos/red/twilio-logo-red.png)
 
       ---
       template: primary-slide
 
-      # Setting up the Twilio Interface
-      .center[# 👀]
-
-      ???
-
-      Twilio Chunk, talk about why twilio
-      ---
-      template: primary-slide
-
-      # A web UI for this application was out of scope.
-
-      ---
-      template: primary-slide
-
-      # DISCLAIMER:
-      --
-      .center[## I am NOT a Twilio API expert or genius-]
-      --
-      .center[## That's the point.]
-      ---
-      template: primary-slide
-
-      # Twilio has some of the most out-of-the-box Ruby-Friendly documentation I have ever seen
-
-      .center[![Twilio](https://i.imgur.com/PUjILMT.png)]
-
-      ???
-
-      That's how I was able to go from basically no Twilio experience at all, to spinning up a fully functioning Rails app.
-      ---
-      template: primary-slide
-
-      # Fast setup - focus on the actual problem at hand and not the integration.
-      --
-      ## Sign up, get your number, get your API Keys, get started
-      --
+      # One smooth ride
       ```ruby
       # Taken directly from twilio documentation
       require 'twilio-ruby'
 
-      account_sid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" # Your Account SID from www.twilio.com/console
-      auth_token = "your_auth_token"   # Your Auth Token from www.twilio.com/console
+      account_sid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" # Acct. SID
+      auth_token = "your_auth_token"   # Auth token
 
       @client = Twilio::REST::Client.new account_sid, auth_token
       message = @client.messages.create(
@@ -241,42 +236,61 @@
       puts message.sid
       ```
 
+      ???
+
+      I am not a twilio expert.
+
+      That's the point.
+
+      Setup was slick and painless.
+
+      Slightly more involved process for Rails integrations but nothing you
+      couldn't hack in a half hour and simply forget about.
+
       ---
       template: primary-slide
-
-      # Additional considerations for Rails...
-
-      ---
-      template: primary-slide
+      class: center
       # Weather Underground
 
       .center[![wu-logo](https://i.imgur.com/u1T8vO4.png)]
+
+      ???
+
+      25,000 independent weather stations data since the 90s, great interface
 
       ---
       template: primary-slide
       ## sdague/weather-underground.rb
 
-      .center[![wu-gem](https://i.imgur.com/LiN8KWL.png)]
-
-      ---
-      template: primary-slide
-
-      # Side note - units of measure for barometric pressure:
-
-      * SI: 101kPa (1 pascal = 1 newton per square metre, 1 N/m2)
-      * USA: 15psi
-      * Inches of Mercury: 29.53"
-      * Millibars: 1013.25 mbar 🤔
-      * Atm: 1
-
-      ---
-      template: primary-slide
-
-      .center[# Rails Backend - deployed on Heroku]
+      .center[![:scale 100%](https://i.imgur.com/LiN8KWL.png)]
 
       ???
 
-      Data modeling chunk
+      Gem is simple, straightforward, already a ruby path for this
+
+      ---
+      template: primary-slide
+
+      # Barometric pressure measurement:
+      --
+
+      * ###SI: 101kPa (1 pascal = 1 newton per square metre, 1 N/m2)
+      --
+
+      * ###USA: 15psi
+      --
+
+      * ###Inches of Mercury: 29.53"
+      --
+
+      * ###Millibars: 1013.25 mbar 🤔
+      --
+
+      * ###Atm: 1
+
+      ???
+
+      articulate a bit more between 'metric' and si approved
 
       ---
       template: primary-slide
@@ -285,11 +299,11 @@
 
       ```ruby
       #<DataPoint:0x00000005e89a18> {
-                           :id => 115,
-          :barometric_pressure => 1014.56146291907,
-                   :pain_level => 4.0,
-                   :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
-                   :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
+                         :id => 115,
+        :barometric_pressure => 1014.56146291907,
+                 :pain_level => 4.0,
+                 :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
+                 :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
       }
       ```
 
@@ -300,56 +314,71 @@
 
       ```ruby
       #<DataPoint:0x00000005e89a18> {
-                           :id => 115,
-          :barometric_pressure => 1014.56146291907, # <---
-          template: primary-slide- What I really care about
-                   :pain_level => 4.0,              # <---
-                   template: primary-slide-
-                   :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
-                   :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
+                         :id => 115,
+        :barometric_pressure => 1014.56146291907, # <---What I care
+                 :pain_level => 4.0,              # <---about
+                 :created_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00,
+                 :updated_at => Sun, 17 Sep 2017 10:26:31 UTC +00:00
       }
       ```
 
       ---
       template: primary-slide
+      class: center, middle
 
-      # Learning to interact with the user, the most difficult part
+      # Difficulty level: .strong[Hard]
+
+      ???
+
+      Most tricky part isn't the modeling or integrations but interacting with the user
 
       ---
       template: primary-slide
 
       # The core flow:
 
-      * Random messaging 5x/day ✉️
-      * Capture pain reading 📈
-      * Marry reading to live barometric pressure 🌪
-      * Handle as many edge cases as possible 😰
+      --
+
+      * ###Random messaging 5x/day ✉️
+      --
+
+      * ###Capture pain reading 📈
+      --
+
+      * ###Marry reading to live barometric pressure 🌪
+      --
+
+      * ###Handle as many edge cases as possible 😰
 
       ???
 
-      Explain the randomness of the flow with a rake task here.
+      Explain the randomness of the flow with a rake task here and why it's important.
 
       ---
       template: primary-slide
 
-      class: center, middle
+      class: center
       # Unexpected user inputs
       --
-      .left[* `'F OFF'`]
+      .left[# 'F OFF']
       ---
       template: primary-slide
-      class: center, middle
-      # Unexpected user inputs
-      .left[* `'F OFF'.to_i == 0`]
+      class: top
+      # .center[Unexpected user inputs]
+
+      # .left[#'F OFF'.to_i == 0]
       --
+
       ```ruby
-      if invalid_entry_response
-        "Huh. Okay. Well, #{pain_level} is not going to get recorded in this system. You know I have the power to text nick with what you are saying if you are TOO naughty."
+      if angry_response
+        "Huh. Okay. I don't think #{pain_level} is quite right..."
+      end
       ```
       --
-      .left[* `66`]
+      # .left[66]
+
       --
-      .left[* Inline adjustments, and retrospective data analysis adjustments]
+      .left[##Inline adjustments, and data post-processing]
 
       ???
 
@@ -363,29 +392,35 @@
 
       ---
       template: primary-slide
-      class: center, middle
+      class: center, top
       ## Ensure that the response was sensitive to the situation
+
+      --
 
       # Giphy integration
 
-      .center[![You better not see this text](https://gph.is/1aPAh1Z)]
+      .center[![:scale 68%](https://i.imgur.com/RYwKQOI.gif)]
       ---
       template: primary-slide
 
       ## Hook up response
       ```ruby
       type = ['funny', 'cat', 'dancing'].sample
-      gif = RestClient.get("https://api.giphy.com/v1/gifs/search?api_key=#{api_key}=#{type}&limit=25&offset=0&rating=G&lang=en")
+      gif = RestClient.get("#{giphy_path_builder}#{type}#{settings}")
       selector = (0..23).to_a.sample
       "Saved! #{JSON.parse(gif)['data'][selector]['bitly_gif_url']}"
       ```
-
-      [!catgif](images/cat.gif)
+      --
+      ## Result:
+      ### Saved!
+      ![:scale 31%](https://i.imgur.com/CsTZTFL.gif)
 
       ---
       template: primary-slide
 
       ## Ensure that the response was sensitive to the situation
+      --
+
 
       ```ruby
       if pain_level.to_f >= 7.0
@@ -416,24 +451,7 @@
       end
       ```
       ---
-      template: primary-slide
-      # Light hearted on the easier days
 
-      ```ruby
-      def less_pain_message
-        [
-          'Successfully saved. Thanks for putting up with this app, it means a lot to nick',
-          'Data has been logged. Wow, we are gonna have a good chunk of data points!',
-          'Saved. You probably think this is all a bunch of random messages nick entered. NOPE! I\'m real! I live inside your phone! help!',
-          # ^^^^ My favorite 🙂
-          'Saved! Hope that your pain levels stay low bee bop!',
-          'Saved- fingers crossed your numbers stay good',
-          'Boom! Loving those low numbers. Hope it stays low!',
-          'Got it saved. Wonder if the pressure is working in your favor?'
-        ].sample
-      end
-      ```
-      ---
       template: primary-slide
 
       # Support on the rough days
@@ -453,26 +471,30 @@
       ---
       template: primary-slide
       class: center, middle
-      # 3. Outcomes and retrospectives
+      # .strong[3]
+      # Outcomes and Retrospectives
       ---
       template: primary-slide
-      class: center, middle
-      # How we view pain
+      class: top
+      #.center[How we view pain]
 
-      .left[* Pain is incredibly subjective]
-      .left[* Hospital stay tried to make it objective]
-      .left[* Laura had become *very* good at monitoring pain to her standard]
-      .left[* !>5? no relief for you]
-      .left[* Adjustment for the race to the top]
+      ###.left[Pain is incredibly subjective]
+      ###.left[Hospital tried to make it objective]
+      ###.left[Laura had become *very* good at monitoring pain to her standard]
+      ###.left[< 5? no relief for you!]
+      ###.left[Adjustment for the race to the top]
 
       ---
       template: primary-slide
 
-      class: center, middle
+      class: center, top
       # Making things mobile
+      --
 
-      .left[* Since we traveled very little during this time, I would manually reset the coordinates when we visited family elsewhere, etc]
-      .left[* This would benefit from location tracking which I was reluctant to do, and wouldn't want to build a native app just to have that]
+      ### .left[Manual coordinate resets]
+      --
+
+      ### .left[Benefit from location data, maybe]
 
       ---
       template: primary-slide
@@ -491,13 +513,15 @@
 
       array = []
       DataPoint.all.each do |dp|
-        array << [dp.barometric_pressure, dp.pain_level] if valid_readings(dp.pain_level)
+        if valid_readings(dp.pain_level)
+          array << [dp.barometric_pressure, dp.pain_level]
+        end
       end
       ```
       ---
       template: primary-slide
 
-      # Write to CSV to share outside of the programming community
+      # Write to CSV
 
       ```ruby
       require 'csv'
@@ -505,21 +529,34 @@
         array.map{|row| csv << row}
       end
       ```
+
+      ???
+
+      Possible chopping block if tight
       ---
       template: primary-slide
-
+      class: center, top
       # Visualize with a Graph
 
-      .center[![graph](https://i.imgur.com/dm7Sp4M.png)]
+      .center[![:scale 80%](https://i.imgur.com/dm7Sp4M.png)]
 
       ---
       template: primary-slide
 
       # SVM in Ruby
 
-      .center[![blog-image](https://i.imgur.com/IB1YGUE.png)]
+      .center[![:scale 100%](https://i.imgur.com/IB1YGUE.png)]
 
       ???
+
+      Shout out to practicalai.com. With posts under a year old that focus on
+      various different real implmentations of ruby against real data using
+      different AI techniques
+
+      Not an expert here, but the SVM approach seemed the most appropriate for
+      the time I had.
+
+      ...30 seconds on svm....
 
       Support Vector Machine (SVM) is a supervised learning algorithm developed by Vladimir Vapnik and his co-workers at AT&T Bell Labs in the mid 90's.
 
@@ -527,22 +564,24 @@
       ---
       template: primary-slide
 
-      # Standing on the shoulders of giants
+      # Giving props 👏
 
       ### (`daugaard/example-svm`)
 
-      ![repo-photo](https://i.imgur.com/UVskqfI.png)
+      ![:scale 90%](https://i.imgur.com/UVskqfI.png)
 
       ???
 
-      Discuss finding blog post on ruby weekly
+      Discuss finding blog post on ruby weekly,
+
+      WHY DOES THIS ONLY HAVE THREE STARS!?
 
       ---
       template: primary-slide
 
       # Finding the 'best' C and Gamma values
 
-      #![ruby-shot](https://i.imgur.com/L3OKGwB.png)
+      #![:scale 100%](https://i.imgur.com/L3OKGwB.png)
 
       ???
 
@@ -560,8 +599,9 @@
       template: primary-slide
 
       # Best results I could garner:
-
-      .center[# `Test Generalization Accuracy: 24.43% - C=5, gamma=1`]
+      <br>
+      ### .center[ Test Generalization Accuracy: .strong[24.43%]]
+      ### .center[ C=5, gamma=1]
 
       ---
       template: primary-slide
@@ -579,15 +619,23 @@
       ---
       template: primary-slide
       # Within 1:
-      ## `Test Generalization Accuracy: 60.34%`
+      --
+
+      ### Test Generalization Accuracy: <u>.strong[60.34%]</u>
+
+      --
+
       # Within 2:
-      ## `Test Generalization Accuracy: 89.66%`
+
+      --
+
+      ### Test Generalization Accuracy: <u>.strong[89.66%]</u>
 
       ---
       template: primary-slide
       # One more takeaway
 
-      .center[![graph](https://i.imgur.com/dm7Sp4M.png)]
+      .center[![:scale 90%](https://i.imgur.com/dm7Sp4M.png)]
 
       ???
 
@@ -598,107 +646,86 @@
 
       # Other thoughts on future processing:
 
-      ##* Measure 'closeness'
-      ##* Increase dataset size
-      ##* Publish dataset for analysis from fellow Rubyists
+      --
+
+      ### Measure 'closeness'
+      --
+
+      ### Increase dataset size
+      --
+
+      ### Publish dataset for analysis from fellow Rubyists
+
+      --
+
+      ### Beyond AVN
 
       ---
       template: primary-slide
+      class: center, middle
 
       # WIP: Forecasting
 
+      ???
+
+      Need stronger source of data before I publish any forecasting information.
+      Also forecasting would not necessarily be a public consumption until a baseline
+      was established.
+
+      We could at least form a hypothesis about 'pain up' or 'pain down' days.
       ---
       template: primary-slide
       class: center, middle
-      # 4. Using our superpower, for good
+      # .strong[4]
+      # Using our superpower, for good
 
       ---
       template: primary-slide
-      class: center, middle
-      * It's not a choice between 'working for the man' and 'toy projects'
+      class: center, top
+      ### It's not a choice between 'working for the man' and 'toy projects'
       --
-      * Not everyone can do what you do
+
+      ### Not everyone can do what you do
       --
-      * What is a few minutes of mindless scripting for you may be life changing for someone else
+
+      ### What is a few minutes of mindless scripting for you may be life changing for someone else
       --
-      * New tooling opportunities
+
+      ### New tooling opportunities and experience
 
       ---
       template: primary-slide
 
       # Wrapup:
 
-      1. Lay out a non-business 'problem' through a story
-      2. Discuss attacking that problem with the help of 'Ruby' 🍖
-      3. Cover outcomes and retrospective observations
-      4. Underline the importance of using your Ruby 'superpower' ❤️
+      ###1. Lay out a non-business 'problem' through a story
+      ###2. Discuss attacking that problem with the help of 'Ruby' 🍖
+      ###3. Cover outcomes and retrospective observations
+      ###4. Underline the importance of using your Ruby 'superpower' ❤️
 
       ---
       template: primary-slide
 
       # Thanks for your time!
-
       ### schwad.github.io (slides will be published here)
       ### @schwad4hd14 (twitter)
+      ### @schwadererer (insta)
       ### github.com/schwad
       ### nicholas.schwaderer@gmail.com
-      ### Let's grow this project
-
-      ---
-      template: primary-slide
-
-
-      # END
-
-      ---
-      template: primary-slide
-
-      ## GOAL: forecasting someday
-      ## setting up the app
-      ## Do a slide about hospital stay before THEN do machine learning
-
-      ---
-      template: primary-slide
-
-      ## Reformatting the iterations with regards to messaging user (3-4 slides of code)
-
-      ## Setting up things for machine learning (3-4 slides, include original blog that inspired me and show code)
-
-      ## The final run through (3-4 slides to get results working)
-
-      ## Final conclusions only 24% going together
-
-      ## However, never under a 4 under x
-
-      ---
-      template: primary-slide
-
-      # GENERAL RESOURCES FOR SELF
-
-      --> styling remark
-
-
-      --> code notes
-
-      ---
-      template: primary-slide
-
-      ## READ UP ON SVMS, C AND GAMMA SHIT IN GENERAL TO AT LEAST BE HALF AN AUTHORITY ON IT. MONDAY
-
-      # show images correctly
-      # correct formatting
-      # improve style?
-      # practice with it, rearrange as needed
-      # practice dual monitors and also pimping out notes
-
+      ### Let's connect
       ---
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
     <script>
+      remark.macros.scale = function (percentage) {
+        var url = this;
+        return '<img src="' + url + '" style="width: ' + percentage + '" />';
+      };
       var slideshow = remark.create({
-        slideNumberFormat: ''
+        slideNumberFormat: '',
+        highlightStyle: 'github',
       });
     </script>
   </body>
