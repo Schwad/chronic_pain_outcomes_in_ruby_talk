@@ -502,18 +502,15 @@ template: primary-slide
 
 ???
 
+Support Vector Machine (SVM) is a supervised learning algorithm
+
+Take in a set of training data of varying types, makes predictions with a set
+of methodologies that someone could probably do a 45 minute talk on themselves.
+
 Shout out to practicalai.com. With posts under a year old that focus on
 various different real implmentations of ruby against real data using
 different AI techniques
 
-Not an expert here, but the SVM approach seemed the most appropriate for
-the time I had.
-
-...30 seconds on svm....
-
-Support Vector Machine (SVM) is a supervised learning algorithm developed by Vladimir Vapnik and his co-workers at AT&T Bell Labs in the mid 90's.
-
-At their core, SVMs are a method for creating a predictor function from a set of training data where the function itself can be a binary, a multi-category, or even a general regression predictor. To accomplish this mathematical feat, SVMs find a hypersurface (for example, a plane in 2D) which attempts to split the positive and negative examples with the largest possible margin on all sides of the (hyper)plane.
 ---
 template: primary-slide
 
@@ -538,16 +535,9 @@ template: primary-slide
 
 ???
 
-** Explain C parameter, and Gaussian paraemeter, also that we just care it's the two things we can tweak.
+C: a larger C will give you lower bias and higher variance a model will have, where a low C will give you high bias and low variance.
 
-The C parameter is similar to the regularization parameter λ we know from other machine learning models, only C is the inverse of λ. That is a larger C will give you lower bias and higher variance a model will have, where a low C will give you high bias and low variance.
-
-The Gamma parameter is a parameter specific to the Gaussian kernel (RBF in libsvm). The gamma parameter define how far a single training example will have influence. So that is how much influence will  a single training example have on examples that are further away from the training example.
-
-To find the optimal C and gamma parameters we are going to create a program that iterates through possible values of C and gamma, and measures the classification accuracy for each combination and finds the best combination. Lastly the program will test the selected combination of C and gamma on unknown data to measure its general classification accuracy.
-
-To do this we must now split our data into 3. A training dataset using to train the model, a validation dataset used to test combinations of C and gamma and select the best one, and lastly a test dataset used to test the model using the optimal C and gamma parameters to find the classification accuracy. We use a split of 70% training data, 15% validation data and 15% test data.
-
+Gamma: defines how far a single training example will have influence
 ---
 template: primary-slide
 
@@ -597,35 +587,22 @@ Nothing under 4 over certain pressure
 ---
 template: primary-slide
 
-# Other thoughts on future processing:
+# Other thoughts on the future:
 
 --
 
 ### Measure 'closeness'
---
 
 ### Increase dataset size
---
 
 ### Publish dataset for analysis from fellow Rubyists
 
---
-
-### Beyond AVN
-
----
-template: primary-slide
-class: center, middle
-
-# WIP: Forecasting
+### WIP: Forecasting
 
 ???
 
-Need stronger source of data before I publish any forecasting information.
-Also forecasting would not necessarily be a public consumption until a baseline
-was established.
+Also did a logistic regression approach which I will be publishing along with the slides
 
-We could at least form a hypothesis about 'pain up' or 'pain down' days.
 ---
 template: primary-slide
 class: center, middle
