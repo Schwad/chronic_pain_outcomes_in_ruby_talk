@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ruby Archaeology</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Raleway);
+      @import url(https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Raleway'; }
+      h1, h2 {
+        font-family: 'PT Serif';
+        font-weight: normal;
+      }
+      h3 {
+        font-family: 'Raleway';
+        font-weight: normal;
+      }
+      .strong {
+        font-weight: bolder;
+      }
+      .big {
+        font-size: 30px;
+      }
+      .bigger {
+        font-size: 40px;
+      }
+      .biggest {
+        font-size: 50px;
+      }
+      .biggester {
+        font-size: 100px;
+      }
+      .big-bold {
+        font-size: 40px;
+        font-weight: bolder;
+      }
+      .white {
+        color: white;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; font-size: 23.5px; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+      name: primary-slide
+
+      ---
+      class: left
+
+      # Ruby Archaeology
+      .left[![ruby](https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.17.0/1520198344144/Microsoft.VisualStudio.Services.Icons.Default)]
+
+      ???
+      How you get set up running really old ruby code
+
+      Do some digging through old code, and even running it ourselves
+      ---
+      class: middle, center
+
+      # Thank you ❤️
+      ---
+      template: primary-slide
+      class: center, middle
+
+      #Who am I?
+
+      ---
+      template: primary-slide
+      class: top, right
+      background-image: url(https://i.imgur.com/VDbyqsS.jpg)
+      background-size: cover
+      ## .white[.strong[I used to live here]]
+
+      ---
+      template: primary-slide
+      background-image: url(https://www.savills.ie/_images/belfast.jpg)
+      background-size: cover
+      ## .white[.strong[Now I live here]]
+
+      ---
+      template: primary-slide
+      class: center
+      # And I work here
+
+      .center[![This is my image](https://i.pcmag.com/imagery/reviews/02lLbDwVdtIQN2uDFnHeN41-11..1569480019.jpg)]
+
+      ---
+      template: primary-slide
+      class: center, middle
+      # We are hiring!
+      ## https://www.shopify.com/careers/2021
+      #### (or DM me)
+      ---
+      template: primary-slide
+      class: center, middle
+      # What is Ruby Archaeology?
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/OTExNie.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/oiZYanU.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/CjKcPXa.png)]
+      ---
+      .center[![:scale 100%](https://i.imgur.com/Vuq9Aia.png)]
+
+      ???
+
+      Why was the symbol of all that is whimsical and right with programming. The
+      whimsy that is core to ruby; the care about the building and the art. He represented
+      a time where you could give major conference talks without sharing your job title,
+      real name or location.
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/0uUhfrh.jpg)]
+
+      ???
+
+      His famous cartoon foxes are in the scotrug logo!
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/C1AUAAR.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/6F8WjiY.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/7vRcQnT.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/Eo6tZ5Z.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+      # "programming is rather thankless. you see your works become replaced by superior works in a year. unable to run at all in a few more."
+
+      ---
+      template: primary-slide
+      class: center, middle
+      # let's run his code
+
+      ---
+      template: primary-slide
+      class: center, middle
+      # Setting up a 2009 coding environment on a 2020 Machine
+
+      ???
+
+      I lost several days trying to set things up nicely on my machines. Talk about strategy.
+
+      Several assumptions.
+
+      Yes, a lot of 2008-2009 ruby packages will struggle to just "run" on a new macbook. many scripts, however, still will work.
+
+      There are a lot of pitfalls, you want all dependencies to be as close to 2009 centric as possibe.
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/r8uZqkv.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+      ```
+      vagrant init bento/ubuntu-10.04
+      vagrant up
+      vagrant ssh
+      ```
+      ???
+
+      With this, we're in
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/iPFMEJL.png)]
+      ???
+
+      Unfortunately apt-get will NOT work out of the box, we need to update our sourcelist to, thankfully, point to an older set of packages
+      ---
+      template: primary-slide
+      class: left, middle
+      ```bash
+      cd etc/apt
+
+      sed -i -e 's#us.archive#old-releases#g' sources.list
+
+      nano sources.list
+
+      sed -i -e 's#security#old-releases#g' sources.list
+      ```
+      ???
+      Let's replace these with old-releases.ubuntu
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/RNfJkbG.png)]
+      ???
+      Now from here, we have to google LIKE it's the past. I'm making the assumption that this code would work within the year of publishing, so exclusively searching old google
+      ---
+      template: primary-slide
+      class: left, middle
+      ```bash
+      sudo apt-get install ruby #=> 1.8.7 🎉
+
+      sudo apt-get install rubygems #=> 1.3.5 💀
+
+      sudo apt-get install git-core #=> 1.7.0.4 💀
+      ```
+      ---
+      template: primary-slide
+      class: center, middle
+      # SPOILER ALERT
+      --
+      ####
+      error: gnutls_handshake() failed:
+      A TLS fatal alert has been received.
+      while accessing https://github.com/hpricot/hpricot/info/refs
+      ???
+      * RVM isn't versioned, you can't use it.
+      * 1.8 ruby on a modern machine cost me two nights and gave me a bad time
+      * rubygems hangs forever and seems not to work
+      * newer version of git required to connect to github
+      * HOW THE HELL DO WE CONNECT TO THE CODE
+      ---
+      template: primary-slide
+      class: center, middle
+      # 💡
+      ???
+      * Rubygems stores the .gem files from all time
+      * I can download it directly
+      * and gem install from the .gem
+      ---
+      template: primary-slide
+      class: left, middle
+      # Alternative method to snag and install gems
+      ```bash
+      sudo wget http://rubygems.org/downloads/hpricot-0.8.1.gem ✅
+
+      gem install --local hpricot-0.8.1.gem
+      ````
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/K7U1BH8.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+      # LIVE DEMO 🤞 🎥
+
+      ???
+      * show rubygem && gem version
+      * CODE
+      ```
+      require 'rubygems' # HIGHLIGHT This was changed in 1.9
+      require 'hpricot'
+      require 'open-uri'
+      page = Hpricot(open("http://www.pastrubies.com"))
+      page.search(".row").count
+      page.search("a").last.attributes["href"]
+      page.search("#story-8").first
+      ```
+      * Webcode
+      - Still referenced, a lot
+        * https://github.com/search?q=hpricot&type=code
+        * https://github.com/seek4science/seek/blob/7a6b9528222c211d221c265061643eacb3cec37a/app/helpers/text_helper.rb
+      - The gem (different idioms, accents and styles)
+        * https://github.com/hpricot/hpricot/tree/ceda421d7e9061c54bc84cc44451f21aee644b8a
+          * README: old comment style
+          * COMMITS: commits pointing to file
+          * Defining constant style: lib/Hpricot/parser
+            * def Hpricot.method instead of self
+      ---
+      template: primary-slide
+      class: center, middle
+      # Death(?) of HPricot
+      .center[![:scale 100%](https://i.imgur.com/x6lSWq0.png)]
+      ???
+      Hey look, two other shopifolk mentioned there, Aaron Patterson and Mike Dalessio! You really never know who you'll run into.
+
+      Claimed to be seven times faster and have no bugs
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/vXrEFqZ.png)]
+
+      ???
+
+      Why strikes back!
+      ---
+      template: primary-slide
+      class: center, middle
+      .center[![:scale 100%](https://i.imgur.com/3Cl3pwI.png)]
+
+      ???
+      Things get a little spicy, and funny, in the comments
+      ---
+      template: primary-slide
+      class: center, middle
+      # Okay, another one
+      ---
+      template: primary-slide
+      class: center, middle
+      # Markaby
+
+      ---
+      template: primary-slide
+      class: center, middle
+      # Live demo
+      ???
+      This had one dependency, which I installed manually. Installing something with a *lot* of dependencies could get tricky and would require something more elegant
+
+      ```
+      # see code
+      nano markaby_example_1.rb
+
+      # run it
+      ruby markaby_example_1.rb | tidy
+
+      # digging through
+      Original: https://github.com/markaby/markaby/tree/5b45794e71d856ad3e60a9d9b79221cbc8a54b73
+      --> Why moved the gemspec to the rakefile in 2006: https://github.com/markaby/markaby/commit/e629b154317ab7a28a63823352fa4b214d0724e2
+      --> note; rubygems was made by a collection of people including chad fowler, david alan black and jim weirich at rubyconf 2004
+      --> appears that he actually did this in setup_gem, in rakehelp and a rakefile:
+        * https://github.com/markaby/markaby/blob/5b45794e71d856ad3e60a9d9b79221cbc8a54b73/Rakefile
+        * https://github.com/markaby/markaby/blob/5b45794e71d856ad3e60a9d9b79221cbc8a54b73/tools/rakehelp.rb#L67
+      --> defines a kernel method for easy access: https://github.com/markaby/markaby/blob/5b45794e71d856ad3e60a9d9b79221cbc8a54b73/lib/markaby/kernel_method.rb
+      --> working with rails in 2007: https://github.com/markaby/markaby/blob/5b45794e71d856ad3e60a9d9b79221cbc8a54b73/lib/markaby/rails.rb
+      --> idiom: using brackets, why not?: https://github.com/markaby/markaby/blob/5b45794e71d856ad3e60a9d9b79221cbc8a54b73/lib/markaby/builder.rb#L56
+
+      ```
+
+      ---
+      template: primary-slide
+      class: center, middle
+      # Time for another gem... 🎹 🎮
+      ---
+      template: primary-slide
+      class: left, middle
+      ```bash
+       sudo wget http://rubygems.org/downloads/bloopsaphone-0.4.gem
+
+       gem install --local bloopsaphone-0.4.gem
+
+       error: portaudio.h: No such file or directory
+
+       sudo apt-get install portaudio19-dev
+      ```
+      ---
+      template: primary-slide
+      class: left, middle
+      ```bash
+       gem "bloopsaphone" 🤔
+
+       require "bloops"
+      ```
+      ---
+      template: primary-slide
+      class: left, middle
+      .center[![:scale 100%](https://i.imgur.com/6Mtx2Fx.png)]
+      ---
+      template: primary-slide
+      class: center, middle
+        # Live...demo?
+
+      ???
+
+      * show running `ruby bloops.rb`
+
+      Due to current limitations with vagrantbox I cannot get bloopsaphone making a noise at this time. But let's take a look at the songs out there:
+      * https://github.com/whymirror/bloopsaphone
+        * Notation
+        * Songs
+      * Example bloop https://github.com/localhost/bloopsaphone/blob/master/ext/ruby/tune_warp.rb
+        * sound: http://freqvibez.net/music/warp-o-mat.mp3
+        * sonic pi anyone?
+      * straight up C extension to ruby
+        * extconf.rb --> THIS IS STILL HOW IT'S DONE TODAY:
+          https://github.com/whymirror/bloopsaphone/blob/master/ext/ruby/extconf.rb
+        * core c: https://github.com/whymirror/bloopsaphone/blob/master/c/bloopsaphone.c
+        * method definitions into ruby: https://github.com/whymirror/bloopsaphone/blob/master/ext/ruby/rubyext.c
+      ---
+      template: primary-slide
+      class: center, middle
+      # Other projects that would be fun to dig into
+      .center[![:scale 100%](https://i.imgur.com/6Eg9gNO.png)]
+      ???
+      Camping --- and a lot of libraries that set on camping
+      Not everything is a rubygem, he hosted his own code
+      unholy --> converts ruby to python bytecode and recompiles to python. THEN creates a helper executable called "potion" that, using this, can execute ruby or python files
+      hobix --> a blogging framework for blogs, comments, posts
+      balloon --> a way to share ruby code directly with Balloon.inflate
+      shoes.rb --> This is STILL going. Ruby code generates a desktop app usable in windows, linux and mac
+
+      ---
+      template: primary-slide
+      class: center, middle
+      # Future considerations
+
+      ???
+      * Publish an image or box ready to go for 2009 ruby development as above
+      * Explore setups linking into that box, possibly in the cloud as well, to revive projects like hobix and camping
+      * Things are starting to get a bit stale (think flash), so attempt to maintain my own working for of whymirror as well. (it's been nearly ten years since it was setup, worth keeping it going)
+      ---
+      template: primary-slide
+
+      # Thanks for your time!
+      ### github.com/schwad
+      ### @schwad4hd14 (twitter)
+      ### nicholas.schwaderer@gmail.com
+      ### @schwadererer (insta)
+      ### Let's connect
+      ---
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      remark.macros.scale = function (percentage) {
+        var url = this;
+        return '<img src="' + url + '" style="width: ' + percentage + '" />';
+      };
+      var slideshow = remark.create({
+        slideNumberFormat: '',
+        highlightStyle: 'github',
+      });
+    </script>
+  </body>
+</html>
